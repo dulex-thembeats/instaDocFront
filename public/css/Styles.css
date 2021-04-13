@@ -1,0 +1,159 @@
+body {
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  font: 16px/22px;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-content {
+  flex-grow: 1;
+}
+footer {
+  color: #88888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+header a {
+  color: #88888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+input {
+  border: 1px solid #cccccccc;
+  padding: 8px;
+}
+button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background: #88888888;
+  color: white;
+  padding: 8px;
+}
+
+body {
+  padding: 20px;
+}
+.container {
+  margin: 0 auto;
+  max-width: 980px;
+}
+.panel {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 160px;
+  margin: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.text1 {
+  position: relative;
+  display: block;
+  padding: 12px 25px 25px 25px;
+  color: #fff;
+  text-decoration: none;
+  z-index: 2;
+}
+.link {
+  color: white;
+  text-decoration: underline;
+  font-size: 11pt;
+  padding: 12px 25px 25px 18px;
+}
+
+.span {
+  display: block;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 96px;
+}
+
+:after {
+  position: absolute;
+  font-family: FontAwesome;
+  color: rgba(0, 0, 0, 1);
+  z-index: 1;
+  transition: all 0.5s;
+  line-height: normal;
+}
+
+.post {
+  background-color: #b8aa0e;
+}
+.post:hover:after {
+  top: 8px;
+}
+.post:after {
+  content: "\f08d";
+  font-size: 200px;
+  color: darken(#b8aa0e, 4%);
+  top: 45px;
+  right: 60px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.comment {
+  background-color: #0377c0;
+}
+.comment:hover:after {
+  top: -5px;
+}
+.comment:after {
+  content: "\f075";
+  font-size: 180px;
+  color: darken(#0377c0, 4%);
+  top: 30px;
+  right: 35px;
+}
+.page {
+  background-color: #279824;
+}
+.page:hover:after {
+  top: 24px;
+}
+.page:after {
+  content: "\f15c";
+  font-size: 160px;
+  color: darken(#279824, 4%);
+  top: 62px;
+  right: 39px;
+}
+.user {
+  background-color: #0377c0;
+}
+.user:hover:after {
+  top: 7px;
+}
+
+.user:hover:after {
+  transition: all 0.5s;
+}
+.user:after {
+  content: "\f007";
+  font-size: 200px;
+  color: darken(#fc1c3e, 8%);
+  top: 45px;
+  right: 35px;
+}
