@@ -2,6 +2,14 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 const routes = require("./routes/admin");
+const admin = require("./models/admin");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("cookie-session");
+const passport = require("passport");
+require("dotenv").config({ path: "variables.env" });
+require("./db/mongoose");
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -18,9 +26,34 @@ hbs.registerPartials(partialsDirectory);
 //setup static directory to serve
 app.use(express.static(publicDirectory));
 
-app.use("/", routes);
+// app.use(morgan()); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+// Takes the raw requests and turns them into usable properties on req.body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(expressValidator());
 
-app.get("/*", notFound);
+app.use(
+  session({
+    name: "session",
+    // keys: [
+    //   /* secret keys */
+    // ],
+    secret: process.env.SECRET,
+
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(admin.createStrategy());
+passport.serializeUser(admin.serializeUser());
+passport.deserializeUser(admin.deserializeUser());
+
+app.use("/", routes);
 
 app.listen(port, () => {
   console.log("app listening on port 8000");
