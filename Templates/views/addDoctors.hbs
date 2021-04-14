@@ -30,19 +30,36 @@
                 <div class="card" style="margin-top:-200px width=800px">
                     <div class="card-body">
                         <h4 class="card-title mb-4" style="width: 850px;">Add Doctor</h4>
-                        <form action="/add-product" enctype="multipart/form-data" method="POST">
+                        <form action="/addDoctors" enctype="multipart/form-data" method="POST">
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label>firstname</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Product Name here"
+                                    <input type="text" name="name" class="form-control" placeholder="firstname here"
                                         required>
                                 </div> <!-- form-group end.// -->
                                 <div class="col form-group">
                                     <label>lastname</label>
-                                    <input type="text" name="brand" class="form-control"
-                                        placeholder="Product brand here" required>
+                                    <input type="text" name="brand" class="form-control" placeholder="Last name here"
+                                        required>
                                 </div> <!-- form-group end.// -->
                             </div> <!-- form-row.// -->
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label>Phone number</label>
+                                    <input type="number" name="name" class="form-control"
+                                        placeholder="Phone number here" required>
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                    <label>email</label>
+                                    <input type="text" name="brand" class="form-control" placeholder="Email here"
+                                        required>
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row.// -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="text" name="brand" class="form-control" placeholder="Password here"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label>Specialization</label>
                                 <select class="form-control" name="category" required>

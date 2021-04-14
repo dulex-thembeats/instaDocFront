@@ -3,6 +3,7 @@ const express = require("express");
 const hbs = require("hbs");
 const routes = require("./routes/admin");
 const admin = require("./models/admin");
+const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("cookie-session");
@@ -27,7 +28,7 @@ hbs.registerPartials(partialsDirectory);
 app.use(express.static(publicDirectory));
 
 // app.use(morgan()); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
+app.use(cookieParser(process.env.SECRET)); // read cookies (needed for auth)
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,6 +49,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 passport.use(admin.createStrategy());
 passport.serializeUser(admin.serializeUser());
