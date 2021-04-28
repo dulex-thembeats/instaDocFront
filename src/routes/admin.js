@@ -17,6 +17,11 @@ router.get(
   authController.isLoggedIn,
   adminController.viewDoctors
 );
+// router.get(
+//   "/getDoctors",
+//   authController.isLoggedIn,
+//   adminController.getDoctors
+// );
 router.get("/*", adminController.fourorfour);
 
 //user post routes

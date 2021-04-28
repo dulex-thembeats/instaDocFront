@@ -2,15 +2,13 @@ const admin = require("../models/admin");
 var axios = require("axios");
 
 exports.registerDoctor = (req, res) => {
-  const body = req.body;
+  var body = req.body;
   var data = JSON.stringify(body);
 
   var config = {
     method: "post",
-    url: "localhost:3000/doctors/register",
+    url: "https://dulex-instadoc.herokuapp.com/doctors/register",
     headers: {
-      // Authorization:
-      // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDYxZTM1N2E1ZjllMTEzNzI2YTc2ODEiLCJpYXQiOjE2MTcwMjc5NzJ9.A9hAqBtGZh-ORVA-uxO2A2t4LKmjHEA-PM6HsH9WXa8",
       "Content-Type": "application/json",
     },
     data: data,
@@ -18,10 +16,18 @@ exports.registerDoctor = (req, res) => {
 
   axios(config)
     .then(function (response) {
+      const firstname = JSON.stringify(response.data.firstname);
+      const lastname = JSON.stringify(response.data.lastname);
+      const fullname = `${firstname} ${lastname}`;
+      res.render("success", { fullname });
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      res.render("failure", {
+        message: "Either user already exists or password too short",
+      });
+      console.log(error.response.data.name);
+      console.log(error.response.data.message);
     });
 };
 
